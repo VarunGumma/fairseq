@@ -98,7 +98,8 @@ def _main(cfg: DictConfig, output_file):
         arg_overrides=overrides,
         task=task,
         suffix=cfg.checkpoint.checkpoint_suffix,
-        strict=(cfg.checkpoint.checkpoint_shard_count == 1),
+        strict=(cfg.checkpoint.checkpoint_shard_count == 1) 
+        and not cfg.checkpoint.load_checkpoint_liberally,
         num_shards=cfg.checkpoint.checkpoint_shard_count,
     )
 
